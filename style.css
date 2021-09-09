@@ -1,0 +1,45 @@
+table{
+    margin: 0;
+    padding: 0;
+    border: 1px solid black;
+    float: right;
+}
+tr td{
+    border: 1px solid black;
+    border-right-style:none ;
+    margin: 0;
+    font-size: large;
+    font-family: sans-serif;
+}
+#gray{
+    background-color: #808080;
+}
+#green1{
+    background-color: #008000;
+}
+#Yellow{
+    background-color: #ffff00;
+    
+}
+#pink{
+    background-color: #ff0000;
+}
+#fire{
+    background-color: #4d0000;
+}
+#water{
+    background-color: #0000ff;
+}
+
+#first{
+    background-color: black;
+    color: white;
+}
+.second{
+    background-color: rgb(180, 180, 180);
+    
+}
+.third{
+    background-color: rgb(112, 112, 112);
+    color: rgb(246, 233, 246);
+}
