@@ -151,11 +151,12 @@ function draw(){
     // console.log(fireArr.length);
     // console.log(fireArr.length);
     
-    for(const i in matrix){
-        if(waterArr.length == 2025){
-            waterArr.length = 0;
-            setup();
-        }
-    }
+    // for(const i in matrix){
+    //     if(waterArr.length == 2025){
+    //         waterArr.length = 0;
+    //         setup();
+    //     }
+    // }
+
 
 }
