@@ -1,4 +1,6 @@
-class GrassEater extends LivingCreature {
+let LivingCreature = require('./LivingCreature')
+
+module.exports = class GrassEater extends LivingCreature {
     constructor(x, y, index) {
         super(x, y, index);
         this.energy = 8;
@@ -7,7 +9,7 @@ class GrassEater extends LivingCreature {
 
     move() {
         let emptyCells = this.chooseCell(0)
-        let emptyCell = rand(emptyCells)
+        let emptyCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
         if (emptyCell && this.energy > 0) {
             this.energy--
             let newX = emptyCell[0]
@@ -24,7 +26,7 @@ class GrassEater extends LivingCreature {
     eat() {
         this.mul()
         let grassCells = this.chooseCell(1)
-        let grassCell = rand(grassCells)
+        let grassCell = grassCells[Math.floor(Math.random() * grassCells.length)]
 
         if (grassCell && this.energy > 0) {
             this.energy++
@@ -45,8 +47,8 @@ class GrassEater extends LivingCreature {
     }
 
     mul() {
-        let emptyCells = this.chooseCell(0) // [[x - 1, y],[x + 1, y - 1], [x + 1, y + 1]];
-        let emptyCell = rand(emptyCells) // [x - 1, y]
+        let emptyCells = super.chooseCell(0) // [[x - 1, y],[x + 1, y - 1], [x + 1, y + 1]];
+        let emptyCell = emptyCells[Math.floor(Math.random() * emptyCells.length)] // [x - 1, y]
         if (this.energy >= 12 && emptyCell) {
             let newX = emptyCell[0] //x - 1
             let newY = emptyCell[1] // y
@@ -55,6 +57,14 @@ class GrassEater extends LivingCreature {
             grassEaterArr.push(great)
             this.energy = 8
         }
+        if (weath == "winter") {
+			this.energy -= 4;
+			this.multiply -= 4;
+		}
+		if (weath == "summer") {
+			this.energy += 2;
+			this.multiply += 2;
+		}
     }
 
     die(){
