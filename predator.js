@@ -11,7 +11,7 @@ module.exports = class Predator extends LivingCreature {
         let emptyCells0 = this.chooseCell(0)
         let grassCells = this.chooseCell(1)
         let emptyCells = [...emptyCells0, ...grassCells]
-        let emptyCell = rand(emptyCells)
+        let emptyCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
         if (emptyCell && this.energy > 0) {
             this.energy--
             let newX = emptyCell[0]
@@ -35,7 +35,7 @@ module.exports = class Predator extends LivingCreature {
     eat() {
         this.mul()
         let grassCells = this.chooseCell(2)
-        let grassCell = rand(grassCells)
+        let grassCell = grassCells[Math.floor(Math.random() * grassCells.length)]
 
         if (grassCell && this.energy > 0) {
             this.energy++
@@ -58,7 +58,7 @@ module.exports = class Predator extends LivingCreature {
 
     mul() {
         let emptyCells = this.chooseCell(0) // [[x - 1, y],[x + 1, y - 1], [x + 1, y + 1]];
-        let emptyCell = rand(emptyCells) // [x - 1, y]
+        let emptyCell = emptyCells[Math.floor(Math.random() * emptyCells.length)] // [x - 1, y]
         if (this.energy >= 15 && emptyCell) {
             let newX = emptyCell[0] //x - 1
             let newY = emptyCell[1] // y
@@ -67,7 +67,16 @@ module.exports = class Predator extends LivingCreature {
             predatorArr.push(predator)
             this.energy = 12
         }
+        if (weath == "winter") {
+			this.energy -= 4;
+			this.multiply -= 4;
+		}
+		if (weath == "summer") {
+			this.energy += 2;
+			this.multiply += 2;
+		}
     }
+    
 
     die(){
         matrix[this.x][this.y] = 0

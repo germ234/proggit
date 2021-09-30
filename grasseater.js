@@ -8,7 +8,7 @@ module.exports = class GrassEater extends LivingCreature {
 
 
     move() {
-        let emptyCells = this.chooseCell(0)
+        let emptyCells = super.chooseCell(0);
         let emptyCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
         if (emptyCell && this.energy > 0) {
             this.energy--

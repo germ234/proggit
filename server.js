@@ -44,8 +44,8 @@ io.sockets.emit("send matrix", matrix)
 
 
 function createObject() {
-    for (var y = 0; y < matrix.length; y++) {
-        for (var x = 0; x < matrix[y].length; x++) {
+    for (var x = 0; x < matrix.length; x++) {
+        for (var y = 0; y < matrix[x].length; y++) {
             if (matrix[x][y] == 1) {
                 matrix[x][y] = 1 
                 grassArr.push(new Grass(x, y, 1))
@@ -95,7 +95,10 @@ setInterval(game, 1000)
 
 function kill() {
     grassArr = [];
-    grassEaterArr = []
+    grassEaterArr = [];
+    predatorArr = [];
+    waterArr = [];
+    fireArr = []
     for (var x = 0; x < matrix.length; x++) {
         for (var y = 0; y < matrix[x].length; y++) {
             matrix[x][y] = 0;
@@ -192,15 +195,15 @@ io.on('connection', function (socket) {
     socket.on("add fire", addFire)
 });
 
-var statistics = {};
+// var statistics = {};
 
-setInterval(function() {
-    statistics.grass = grassArr.length;
-    statistics.grassEater = grassEaterArr.length;
-    statistics.predator = predatorArr.length;
-    statistics.water = waterArr.length;
-    statistics.fire = fireArr.length;
-    fs.writeFile("statistics.json", JSON.stringify(statistics), function(){
-        console.log("send")
-    })
-},1000)
+// setInterval(function() {
+//     statistics.grass = grassArr.length;
+//     statistics.grassEater = grassEaterArr.length;
+//     statistics.predator = predatorArr.length;
+//     statistics.water = waterArr.length;
+//     statistics.fire = fireArr.length;
+//     fs.writeFile("statistics.json", JSON.stringify(statistics), function(){
+//         console.log("send")
+//     })
+// },1000)

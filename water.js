@@ -1,19 +1,23 @@
 let LivingCreature = require('./LivingCreature')
 
 module.exports = class Water extends LivingCreature {
-    
+    constructor(x, y, index){
+        super(x, y, index);
+        this.mulyiply = 0;
+    }
+
     mul () {
         this.multiply++;
         var emptyCells = this.chooseCell(0);
-        var emptyCell = rand(emptyCells);
+        var emptyCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
         var grassCells = this.chooseCell(1);
-        var grassCell = rand(grassCells);
+        var grassCell = grassCells[Math.floor(Math.random() * grassCells.length)];
         var grasseaterCells = this.chooseCell(2);
-        var grasseaterCell = rand(grasseaterCells);
+        var grasseaterCell = grasseaterCells[Math.floor(Math.random() * grasseaterCells.length)];
         var predatorCells = this.chooseCell(3);
-        var predatorCell = rand(predatorCells);
+        var predatorCell = predatorCells[Math.floor(Math.random() * predatorCells.length)];
         var fireCells = this.chooseCell(5);
-        var fireCell = rand(fireCells);
+        var fireCell = fireCells[Math.floor(Math.random() * fireCells.length)];
         // console.log(emptyCells);
         if(emptyCell && this.multiply >= 7){
             var newX = emptyCell[0];

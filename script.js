@@ -170,7 +170,7 @@
 // }
 
 var socket = io();
-
+let weath = 'summer'
 var side = 10;
 function setup() {
     createCanvas(50 * side, 50 * side);
@@ -182,9 +182,9 @@ socket.on("weather", function (data) {
 })
 
 function nkarel(matrix) {
-    for (var y = 0; y < matrix.length; y++) {
-        for (var x = 0; x < matrix[0].length; x++) {
-            var obj = matrix[y][x];
+    for (var x = 0; x < matrix.length; x++) {
+        for (var y = 0; y < matrix[0].length; y++) {
+            var obj = matrix[x][y];
             if (obj == 1){
                 if(weath == "summer") {
                 fill("green");
@@ -199,6 +199,12 @@ function nkarel(matrix) {
                 fill("yellow");
             }else if (obj == 0){
                 fill("grey")
+            }else if (obj == 3){
+                fill("red")
+            }else if (obj == 4){
+                fill("blue")
+            }else if (obj == 5){
+                fill("#4d0000")
             }
             rect(x * side, y * side, side, side);
         }
