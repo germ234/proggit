@@ -195,15 +195,15 @@ io.on('connection', function (socket) {
     socket.on("add fire", addFire)
 });
 
-// var statistics = {};
+var statistics = {};
 
-// setInterval(function() {
-//     statistics.grass = grassArr.length;
-//     statistics.grassEater = grassEaterArr.length;
-//     statistics.predator = predatorArr.length;
-//     statistics.water = waterArr.length;
-//     statistics.fire = fireArr.length;
-//     fs.writeFile("statistics.json", JSON.stringify(statistics), function(){
-//         console.log("send")
-//     })
-// },1000)
+setInterval(function() {
+    statistics.grass = grassArr.length;
+    statistics.grassEater = grassEaterArr.length;
+    statistics.predator = predatorArr.length;
+    statistics.water = waterArr.length;
+    statistics.fire = fireArr.length;
+    fs.writeFile("statistics.json", JSON.stringify(statistics), function(){
+        console.log("send")
+    })
+},1000)
